@@ -1,0 +1,58 @@
+<section class="section">
+	<div class="container">
+		<h1 class="title">Bienvenue dans l'univers d'Arlhène !</h1>
+		<h2 class="subtitle">
+			Les informations de base de ce monde, et les dernières "news" seront inscrites ici.
+		</h2>
+
+		<div class="columns">
+			<div class="column is-2">
+				<aside class="menu is-hidden-mobile">
+					<ul class="menu-list">
+						<li><a class="is-active">Précédemment</a></li>
+						<li><a>Facepalm récent</a></li>
+					</ul>
+				</aside>
+			</div>
+			
+			<div class="column is-10">
+				<article>
+					<h2 class="is-size-4 no-sub">Précédemment...</h2>
+					<p class="has-text-justified">
+						Nos héros ont fait escale sur une petite archipel, où les différents continents sont représentés et où se situe le quartier général des voyageurs. En route vers le lieu de leur prochain bastion, c'était pour eux l'occasion de souffler un peu. <br>
+						Mais c'était sans compter la malchance habituelle de ce groupe de héros d'une époque disparue !
+					</p>
+				</article>
+				
+				<article>
+					<h2 class="is-size-4">Facepalm récent</h2>
+					<h3 class="is-size-5 has-text-grey-light">Une catégorie pour citer un moment (ou plusieurs ?) qui mérite un "facepalm"</h3>
+					
+					<div class="box">
+						<div class="media">
+							<figure class="media-left">
+								<p class="image is-64x64">
+									<img src="https://bulma.io/images/placeholders/128x128.png">
+								</p>
+							</figure>
+							
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>Sezan l'Elfe</strong>
+										<br>
+										<small class="has-text-link">@Martin</small>
+										<br>
+										Certains diront que mon avis est sans doute biaisé, mais dénoncer un camarade à un boss aux stats <strong>surboostées</strong> est certainement la définition d'une action "facepalm".
+										<br><br>
+										<span class="is-italic">(La personne visée se reconnaîtra...)</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
