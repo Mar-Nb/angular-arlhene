@@ -23,6 +23,13 @@ export class AppComponent {
 	}
 
 	ngOnInit() {
+		const splitRoute = window.location.href.split("/");
+		const section = splitRoute[splitRoute.length - 1];
+		// console.log(section);
+
+		document.getElementById("tab-" + section)?.classList.add("is-active", "has-text-primary", "has-text-weight-semibold");
+		document.getElementById("ni-" + section)?.classList.add("is-active");
+
 		document.querySelectorAll("[id^='tab']").forEach(this.changerSection);
 		document.querySelectorAll("[id^='ni-']").forEach(this.changerSection);
 
@@ -50,5 +57,5 @@ export class AppComponent {
 				});
 			}
 		});
-	}	
+	}
 }
