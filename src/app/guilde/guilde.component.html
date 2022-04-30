@@ -1,1 +1,81 @@
-<p>guilde works!</p>
+<section class="section">
+	<div class="container">
+		<h1 class="title">La guilde</h1>
+		<h2 class="subtitle">Les informations, la situation et les membres de la guilde sont listés ici.</h2>
+
+		<div class="columns">
+			<div class="column is-2">
+				<aside class="menu is-hidden-mobile fixed-menu">
+					<ul class="menu-list">
+						<li><a class="is-active" (click)="scrollTo('informations')" data-id="informations">Informations</a></li>
+						<li><a (click)="scrollTo('quetes')" data-id="quetes">Quêtes</a></li>
+						<li><a (click)="scrollTo('items')" data-id="items">Objets de la guilde</a></li>
+						<li><a (click)="scrollTo('membres')" data-id="membres">Membres</a></li>
+					</ul>
+				</aside>
+			</div>
+
+			<div class="column is-10">
+				<div class="level is-mobile block">
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Membre(s)</p>
+							<p class="title">???</p>
+						</div>
+					</div>
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Capital (en cuivre)</p>
+							<p class="title">
+								???
+								<i class="fa-solid fa-coins fa-xs icon-cuivre"></i>
+							</p>
+						</div>
+					</div>
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Capital (en fer)</p>
+							<p class="title">
+								???
+								<i class="fa-solid fa-coins fa-xs has-text-grey-lighter"></i>
+							</p>
+						</div>
+					</div>
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Capital (en or)</p>
+							<p class="title">
+								???
+								<i class="fa-solid fa-coins fa-xs has-text-warning"></i>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<article id="informations">
+					<h2 class="is-size-4">Informations</h2>
+					<h3 class="is-size-5 has-text-grey-light">Tout ce qu'il y a savoir sur la guilde des joueurs</h3>
+					<p class="has-text-justified"></p>
+				</article>
+
+				<article id="quetes">
+					<h2 class="is-size-4">Quêtes</h2>
+					<h3 class="is-size-5 has-text-grey-light">Toutes les quêtes : achevées ou en cours</h3>
+					<p class="has-text-justified"></p>
+				</article>
+
+				<article id="items">
+					<h2 class="is-size-4">Objets de la guilde</h2>
+					<h3 class="is-size-5 has-text-grey-light">Les objets en possession de la guilde</h3>
+					<p class="has-text-justified"></p>
+				</article>
+
+				<article id="membres">
+					<h2 class="is-size-4">Membres</h2>
+					<h3 class="is-size-5 has-text-grey-light">Les membres de la guilde</h3>
+					<p class="has-text-justified"></p>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>

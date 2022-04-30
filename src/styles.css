@@ -12,7 +12,7 @@ article:not(:last-child) {
 	margin-bottom: 5rem;
 }
 
-div.column.is-2 {
+div.column.is-2:not(.no-border) {
 	border-right: 1px solid #f3f3f3;
 }
 
