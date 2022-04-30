@@ -1,1 +1,127 @@
-<p>pnj works!</p>
+<section class="section">
+	<div class="container">
+		<h1 class="title">Listes des PNJ</h1>
+		<h2 class="subtitle">
+			Les PNJ (<strong>P</strong>ersonnage <strong>N</strong>on <strong>J</strong>ouable) rencontrés au cours de l'histoire
+		</h2>
+
+		<div class="columns">
+			<div class="column is-2 is-hidden-mobile">
+				<h3 class="is-size-5 is-uppercase has-text-grey-light block">Filtres</h3>
+
+				<aside class="menu fixed-menu">
+					<p class="menu-label">Type</p>
+					<ul class="menu-list">
+						<li><label class="checkbox">
+							<input type="checkbox">
+							Humain
+						</label></li>
+						<li><label class="checkbox">
+							<input type="checkbox">
+							Familier
+						</label></li>
+					</ul>
+
+					<p class="menu-label">Etat</p>
+					<ul class="menu-list">
+						<li><label class="checkbox">
+							<input type="checkbox" name="" id="">
+							Vivant
+						</label></li>
+						<li><label class="checkbox">
+							<input type="checkbox" name="" id="">
+							Mort
+						</label></li>
+					</ul>
+				</aside>
+			</div>
+
+			<div class="column is-10">
+				<div class="level is-mobile">
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Vivant(s)</p>
+							<p class="title">???</p>
+						</div>
+					</div>
+					<div class="level-item has-text-centered">
+						<div>
+							<p class="heading">Mort(s)</p>
+							<p class="title">???</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns is-vcentered">
+					<div class="column">
+						<div class="card">
+							<div class="card-content">
+								<div class="tags">
+									<span class="tag is-rounded is-info">Familier</span>
+								</div>
+
+								<p class="title is-size-4">Spoon Snake</p>
+								<p class="subtitle is-size-6">Familier d'Enydras</p>
+								<div class="content">Etat : Vivant (?)</div>
+							</div>
+
+							<footer class="card-footer">
+								<button class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj">Détails</button>
+							</footer>
+						</div>
+					</div>
+
+					<div class="column">
+						<div class="card">
+							<div class="card-content">
+								<div class="tags">
+									<span class="tag is-rounded is-info">Familier</span>
+								</div>
+
+								<p class="title is-size-4">Tanya</p>
+								<p class="subtitle is-size-6">Familier d'Ewilan</p>
+								<div class="content">Etat : En pleine croissance</div>
+							</div>
+
+							<footer class="card-footer">
+								<button class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj">Détails</button>
+							</footer>
+						</div>
+					</div>
+
+					<div class="column">
+						<div class="card">
+							<div class="card-content">
+								<div class="tags">
+									<span class="tag is-rounded is-info">Humain</span>
+								</div>
+
+								<p class="title is-size-4">Alix</p>
+								<p class="subtitle is-size-6">Membre de la guilde</p>
+								<div class="content">Etat : Vivante</div>
+							</div>
+
+							<footer class="card-footer">
+								<button class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj">Détails</button>
+							</footer>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div id="modal-pnj" class="modal">
+	<div class="modal-background"></div>
+	<div class="modal-card">
+		<header class="modal-card-head has-background-primary">
+			<p class="modal-card-title">Fiche du personnage</p>
+			<button class="delete" aria-label="close"></button>
+		</header>
+		<section class="modal-card-body">
+			<!-- Content ... -->
+			C'est ici que figureront les informations concernant le PNJ : histoire (plus ou moins longue), stats connues, ...
+		</section>
+	</div>
+</div>

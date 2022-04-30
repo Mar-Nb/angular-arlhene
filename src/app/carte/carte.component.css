@@ -1,0 +1,8 @@
+figure + div.message {
+    margin-top: 1rem;
+}
+
+figure + div.message>div.message-body {
+    border-left-color: #1abc9c;
+    border-left-width: 4px;
+}
