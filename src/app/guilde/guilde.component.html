@@ -4,8 +4,8 @@
 		<h2 class="subtitle">Les informations, la situation et les membres de la guilde sont listés ici.</h2>
 
 		<div class="columns">
-			<div class="column is-2">
-				<aside class="menu is-hidden-mobile fixed-menu">
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu fixed-menu">
 					<ul class="menu-list">
 						<li><a class="is-active" (click)="scrollTo('informations')" data-id="informations">Informations</a></li>
 						<li><a (click)="scrollTo('quetes')" data-id="quetes">Quêtes</a></li>
@@ -32,6 +32,9 @@
 							</p>
 						</div>
 					</div>
+				</div>
+
+				<div class="level is-mobile block">
 					<div class="level-item has-text-centered">
 						<div>
 							<p class="heading">Capital (en fer)</p>

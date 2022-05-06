@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-carte',
-	templateUrl: './carte.component.html',
-	styleUrls: ['./carte.component.css']
+	selector: 'app-culture',
+	templateUrl: './culture.component.html',
+	styleUrls: ['./culture.component.css']
 })
-export class CarteComponent implements OnInit {
+export class CultureComponent implements OnInit {
 
 	constructor() { }
 
 	isScrolling: boolean = false;
-	isInteractiveMap: boolean = false;
 
 	ngOnInit(): void {
 		// Changer le menu-item qui a la classe "is-active"
@@ -44,12 +43,6 @@ export class CarteComponent implements OnInit {
 
 		// Utilisation du setTimeout() pour éviter de voir tous les menu-item passer un à un en "is-active"
 		setTimeout(() => { this.isScrolling = false; }, 900);
-	}
-	
-	toggleCarte(ev: Event): void {
-		this.isInteractiveMap = (ev.target as HTMLInputElement)?.checked;
-		document.getElementById("carte-std")?.classList.toggle("invisible");
-		document.getElementById("carte-svg")?.classList.toggle("invisible");
 	}
 
 }

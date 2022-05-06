@@ -9,6 +9,7 @@ import { CarteComponent } from './carte/carte.component';
 import { PnjComponent } from './pnj/pnj.component';
 import { GuildeComponent } from './guilde/guilde.component';
 import { MythologieComponent } from './mythologie/mythologie.component';
+import { CultureComponent } from './culture/culture.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MythologieComponent } from './mythologie/mythologie.component';
     CarteComponent,
     PnjComponent,
     GuildeComponent,
-    MythologieComponent
+    MythologieComponent,
+    CultureComponent
   ],
   imports: [
     BrowserModule,

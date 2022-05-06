@@ -43,3 +43,7 @@ div.column.is-2:not(.no-border) {
 ::-webkit-scrollbar-thumb:active {
 	background-color: #1abc9c;
 }
+
+img + figcaption {
+	margin-top: 1rem;
+}

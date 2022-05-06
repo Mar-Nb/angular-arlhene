@@ -1,8 +1,31 @@
-figure + div.message {
+#carte-monde div.message {
     margin-top: 1rem;
 }
 
-figure + div.message>div.message-body {
+#carte-monde div.message>div.message-body {
     border-left-color: #1abc9c;
     border-left-width: 4px;
+}
+
+#toggle-carte {
+	margin-top: 1.5rem;
+}
+
+g path, g circle {
+	fill: #000000;
+	stroke: #000000;
+	stroke-width: 1px;
+	stroke-linecap: butt;
+	stroke-linejoin: miter;
+	stroke-opacity: 1;
+	transition: 0,3s;
+}
+
+g:hover path, g:hover circle {
+	stroke: #1abc9c;
+	stroke-width: 7px;
+}
+
+.invisible {
+	display: none;
 }

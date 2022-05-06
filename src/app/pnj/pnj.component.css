@@ -1,3 +1,7 @@
 .menu-list {
   line-height: inherit;
 }
+
+input[type="checkbox"]:disabled {
+	cursor: not-allowed;
+}
