@@ -52,4 +52,18 @@ export class CarteComponent implements OnInit {
 		document.getElementById("carte-svg")?.classList.toggle("invisible");
 	}
 
+	openModal(continent: string) {
+		document.getElementById("modal-" + continent)?.classList.add("is-active");
+		document.getElementsByTagName("html")[0].classList.add("is-clipped");
+	}
+
+	closeModal(continent: string) {
+		document.getElementById("modal-" + continent)?.classList.remove("is-active");
+		document.getElementsByTagName("html")[0].classList.remove("is-clipped");
+	}
+
+	closeAllModals() {
+		(document.querySelectorAll(".modal") || []).forEach((modal) => { this.closeModal(modal.id); });
+	}
+
 }
