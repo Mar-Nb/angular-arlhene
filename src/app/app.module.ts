@@ -11,6 +11,8 @@ import { GuildeComponent } from './guilde/guilde.component';
 import { MythologieComponent } from './mythologie/mythologie.component';
 import { CultureComponent } from './culture/culture.component';
 
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { CultureComponent } from './culture/culture.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+	HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

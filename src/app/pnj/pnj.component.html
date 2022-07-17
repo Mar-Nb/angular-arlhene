@@ -52,8 +52,27 @@
 					</div>
 				</div>
 
-				<div class="columns is-vcentered">
-					<div class="column">
+				<div class="columns is-desktop is-multiline is-vcentered">
+					<div class="column is-one-third" *ngFor="let pnj of listePnj">
+						<div class="card">
+							<div class="card-content">
+								<div class="tags">
+									<ng-template ngFor let-tag [ngForOf]="pnj.tags.trim().split(',')">
+										<span class="tag is-rounded is-info">{{ tag }}</span>
+									</ng-template>
+								</div>
+								<p class="title is-size-4">{{ [pnj.prenom, pnj.nom].join(" ") }}</p>
+								<p class="subtitle is-size-6">{{ pnj.designation }}</p>
+								<div class="content">Etat: {{ pnj.etat }}</div>
+							</div>
+
+							<footer class="card-footer">
+								<button id="{{ pnj.id }}" class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj" (click)="openModal('modal-pnj')">Détail</button>
+							</footer>
+						</div>
+					</div>
+
+					<!-- <div class="column">
 						<div class="card">
 							<div class="card-content">
 								<div class="tags">
@@ -105,17 +124,17 @@
 								<button class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj">Détails</button>
 							</footer>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
 		
 		<div id="modal-pnj" class="modal">
-			<div class="modal-background"></div>
+			<div class="modal-background" (click)="closeModal('modal-pnj')"></div>
 			<div class="modal-card">
 				<header class="modal-card-head has-background-primary">
 					<p class="modal-card-title">Fiche du personnage</p>
-					<button class="delete" aria-label="close"></button>
+					<button class="delete" aria-label="close" (click)="closeModal('modal-pnj')"></button>
 				</header>
 				<section class="modal-card-body">
 					<!-- Content ... -->
