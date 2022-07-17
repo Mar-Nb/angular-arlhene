@@ -11,6 +11,8 @@
 	margin-top: 1.5rem;
 }
 
+g { cursor: pointer; }
+
 g path, g circle {
 	fill: #000000;
 	stroke: #000000;
