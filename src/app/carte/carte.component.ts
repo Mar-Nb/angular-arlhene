@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeoService } from '../services/geo.service';
 
 @Component({
 	selector: 'app-carte',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarteComponent implements OnInit {
 
-	constructor() { }
+	constructor(private geoService: GeoService) { }
 
 	isScrolling: boolean = false;
 	isInteractiveMap: boolean = false;
@@ -55,6 +56,13 @@ export class CarteComponent implements OnInit {
 	openModal(continent: string) {
 		document.getElementById("modal-" + continent)?.classList.add("is-active");
 		document.getElementsByTagName("html")[0].classList.add("is-clipped");
+		this.geoService.getGeoInfos(continent).subscribe({
+			next(value: any) {
+				console.log("Donnée du continent :", value);
+				(document.getElementById("modal-" + continent)?.querySelector("section p") as HTMLParagraphElement).textContent = value.infos;
+			},
+			error(err) { console.log(err.message) }
+		});
 	}
 
 	closeModal(continent: string) {
