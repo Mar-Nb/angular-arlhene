@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GuildeService } from '../services/guilde.service';
 
 @Component({
 	selector: 'app-guilde',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuildeComponent implements OnInit {
 
-	constructor() { }
+	constructor(private guildeServ: GuildeService) { }
 
 	isScrolling: boolean = false;
+	listeMembres: any = [];
 
 	ngOnInit(): void {
 		// Changer le menu-item qui a la classe "is-active"
@@ -35,6 +37,16 @@ export class GuildeComponent implements OnInit {
 		}, { rootMargin: "-50% 0px" });
 
 		for (let i = 0; i < articles.length; i++) { observer.observe(articles[i]); }
+		
+		this.guildeServ.getMembres().subscribe({
+			next: (value: any) => { this.listeMembres = value; console.log(this.listeMembres); },
+			error: (err: Error) => alert("Erreur de récupération des membres de la guilde : " + err.message)
+		});
+		
+		document.addEventListener("keydown", (evt) => {
+			const e = evt || window.event;
+			if (e.code == "Escape") { this.closeAllModals(); }
+		});
 	}
 
 	scrollTo(element: string): void {
@@ -44,5 +56,18 @@ export class GuildeComponent implements OnInit {
 		// Utilisation du setTimeout() pour éviter de voir tous les menu-item passer un à un en "is-active"
 		setTimeout(() => { this.isScrolling = false; }, 900);
 	}
-
+	
+	openModal(id: string) {
+		document.getElementById(id)?.classList.add("is-active");
+		document.getElementsByTagName("html")[0].classList.add("is-clipped");
+	}
+	
+	closeModal(id: string) {
+		document.getElementById(id)?.classList.remove("is-active");
+		document.getElementsByTagName("html")[0].classList.remove("is-clipped");
+	}
+	
+	closeAllModals() {
+		(document.querySelectorAll(".modal") || []).forEach((modal) => { this.closeModal(modal.id); });
+	}
 }

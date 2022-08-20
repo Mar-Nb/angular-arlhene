@@ -76,9 +76,46 @@
 				<article id="membres">
 					<h2 class="is-size-4">Membres</h2>
 					<h3 class="is-size-5 has-text-grey-light">Les membres de la guilde</h3>
-					<p class="has-text-justified"></p>
+					<div class="columns is-desktop is-multiline is-vcentered">
+						<div class="column is-one-third" *ngFor="let membre of listeMembres">
+							<div class="card">
+								<div class="card-content">
+									<div class="tags">
+										<ng-template ngFor let-tag [ngForOf]="membre.tags.trim().split(',')">
+											<span class="tag is-rounded is-info">{{ tag }}</span>
+										</ng-template>
+									</div>
+									
+									<p class="title is-size-4">{{ [membre.prenom, membre.nom].join(" ") }}</p>
+									
+									<p class="subtitle is-size-6">{{ membre.designation }}</p>
+									
+									<div class="content">Etat : {{ membre.etat }} </div>
+								</div>
+								
+								<footer class="card-footer">
+									<button id="{{ membre.id }}" class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-membre" (click)="openModal('modal-membre')">Détails</button>
+								</footer>
+							</div>
+						</div>
+					</div>
 				</article>
 			</div>
+		</div>
+	</div>
+	
+	<div id="modal-membre" class="modal">
+		<div class="modal-background" (click)="closeModal('modal-membre')"></div>
+		
+		<div class="modal-card">
+			<header class="modal-card-head has-background-primary">
+				<p class="modal-card-title">Fiche de personnage</p>
+				<button class="delete" aria-label="close" (click)="closeModal('modal-membre')"></button>
+			</header>
+			
+			<section class="modal-card-body">
+				Les infos sur le personnage membre de la guilde.
+			</section>
 		</div>
 	</div>
 </section>
