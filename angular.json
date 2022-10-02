@@ -103,5 +103,8 @@
       }
     }
   },
-  "defaultProject": "angular-arhlene"
+  "defaultProject": "angular-arhlene",
+  "cli": {
+    "analytics": false
+  }
 }

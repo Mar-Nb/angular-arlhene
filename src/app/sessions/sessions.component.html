@@ -34,7 +34,7 @@
 					<ul class="menu-list">
 						<li *ngFor="let s of sessions; first as isFirst">
 							<!-- Obliger de passer par la syntaxe "attr.data" pour les données en dataset -->
-							<a [ngClass]="{'is-active': isFirst}" (click)="scrollTo('session-' + s.numero, $event.target);" [attr.data-id]="'session-' + s.numero">
+							<a [class]="isFirst ? 'is-active' : ''" (click)="scrollTo('session-' + s.numero, $event.target);" [attr.data-id]="'session-' + s.numero">
 								Session {{ s.numero }}
 							</a>
 						</li>
@@ -50,7 +50,7 @@
 			</div>
 
 			<div class="column is-10">
-				<article #listeSessions *ngFor="let s of sessions">
+				<article #listeSessions *ngFor="let s of sessions" [id]="'session-' + s.numero">
 					<h2 class="is-size-4 no-sub">Sessions {{ s.numero }}</h2>
 					<p class="has-text-justified" [innerHTML]="s.session"></p>
 				</article>

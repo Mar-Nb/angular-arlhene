@@ -29,32 +29,33 @@ export class SessionsComponent implements OnInit, AfterViewInit {
 		this.listeS.changes.subscribe(t => {
 			// Une fois les articles chargés, on réécrit le style de liste
 			document.querySelectorAll("article ul").forEach(ul => { (ul as HTMLElement).style.listStyle = "inside"; });
+
+			// ScrollSpy du menu - Dès qu'on franchit le milieu horizontal du viewport, on est notifié de l'élément visible
+			// Note : Le ScrollSpy ne peut être mis qu'une fois les articles chargés
+			const sessions = document.getElementsByTagName("article");
+			const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting && !this.isScrolling) {
+						const itemMenu = document.querySelector(`a[data-id='${entry.target.id}']`);
+						const activeLink = document.querySelector(".menu-list a.is-active");
+						activeLink?.classList.remove("is-active");
+						itemMenu?.classList.add("is-active");
+					}
+				}
+			}, { rootMargin: "-50% 0px" });
+	
+			for (let i = 0; i < sessions.length; i++) { observer.observe(sessions[i]); }
 		});
 	}
 
 	ngOnInit(): void {
-		// ScrollSpy du menu - Dès qu'on franchit le milieu horizontal du viewport, on est notifié de l'élément visible
-		const sessions = document.getElementsByTagName("article");
-		const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-			for (const entry of entries) {
-				if (entry.isIntersecting && !this.isScrolling) {
-					const itemMenu = document.querySelector(`a[data-id='${entry.target.id}']`);
-					const activeLink = document.querySelector(".menu-list a.is-active");
-					activeLink?.classList.remove("is-active");
-					itemMenu?.classList.add("is-active");
-				}
-			}
-		}, { rootMargin: "-50% 0px" });
-
-		for (let i = 0; i < sessions.length; i++) { observer.observe(sessions[i]); }
-		
 		// Liste des joueurs ayant des POV de sessions
 		this.sessionServ.getJoueurs().subscribe({
 			next: (value: any) => {
 				this.joueurs = value;
-				console.log("Liste des joueurs : ", this.joueurs);				
+				// console.log("Liste des joueurs : ", this.joueurs);				
 			},
-			error: (err: Error) => alert("Erreur de récupération des joueurs : " + err.message)
+			error: (err: Error) => alert("Erreur de récupération des joueurs : " + err.message),
 		});
 	}
 
