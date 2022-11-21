@@ -17,9 +17,14 @@ export class GuildeComponent implements OnInit {
 		// Changer le menu-item qui a la classe "is-active"
 		document.querySelectorAll(".menu-list a").forEach((link) => {
 			link.addEventListener("click", () => {
-				const activeLink = document.querySelector(".menu-list a.is-active");
+				const activeLink = document.querySelector(".fixed-menu a.is-active");
+				const activeLinkOff = document.querySelector(".offcanvas a.is-active");
 				activeLink?.classList.remove("is-active");
+				activeLinkOff?.classList.remove("is-active");
 				link.classList.add("is-active");
+
+				const linkOff = document.querySelector(`.fixed-menu a[data-id='${(link as HTMLAnchorElement).dataset['id']}'`);
+				linkOff?.classList.add("is-active");
 			});
 		});
 
@@ -28,10 +33,14 @@ export class GuildeComponent implements OnInit {
 		const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
 			for (const entry of entries) {
 				if (entry.isIntersecting && !this.isScrolling) {
-					const itemMenu = document.querySelector(`a[data-id='${entry.target.id}']`);
-					const activeLink = document.querySelector(".menu-list a.is-active");
+					const itemMenu = document.querySelector(`.fixed-menu a[data-id='${entry.target.id}']`);
+					const itemMenuOff = document.querySelector(`.offcanvas a[data-id='${entry.target.id}']`);
+					const activeLink = document.querySelector(".fixed-menu a.is-active");
+					const activeLinkOff = document.querySelector(".offcanvas a.is-active");
 					activeLink?.classList.remove("is-active");
+					activeLinkOff?.classList.remove("is-active");
 					itemMenu?.classList.add("is-active");
+					itemMenuOff?.classList.add("is-active");
 				}
 			}
 		}, { rootMargin: "-50% 0px" });
@@ -69,5 +78,15 @@ export class GuildeComponent implements OnInit {
 	
 	closeAllModals() {
 		(document.querySelectorAll(".modal") || []).forEach((modal) => { this.closeModal(modal.id); });
+	}
+	
+	openOffCanvas() {
+		(document.querySelector(".offcanvas") as HTMLDivElement).style.width = "100%";
+		document.getElementsByTagName("html")[0]?.classList.add("is-clipped");
+	}
+
+	closeOffCanvas() {
+		(document.querySelector(".offcanvas") as HTMLDivElement).style.width = "0";
+		document.getElementsByTagName("html")[0]?.classList.remove("is-clipped");
 	}
 }

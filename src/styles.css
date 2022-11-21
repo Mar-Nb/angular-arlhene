@@ -3,8 +3,17 @@ div.columns {
 	margin-top: 2rem;
 }
 
+h1[class*="is-size"].no-sub,
+h1[class*="is-size"]+h2[class*="is-size"],
 h2[class*="is-size"].no-sub,
-h2[class*="is-size"]+h3[class*="is-size"] {
+h2[class*="is-size"]+h3[class*="is-size"],
+h3[class*="is-size"].no-sub,
+h3[class*="is-size"]+h4[class*="is-size"],
+h4[class*="is-size"].no-sub,
+h4[class*="is-size"]+h5[class*="is-size"],
+h5[class*="is-size"].no-sub,
+h5[class*="is-size"]+h6[class*="is-size"],
+h6[class*="is-size"] {
 	margin-bottom: 1rem;
 }
 

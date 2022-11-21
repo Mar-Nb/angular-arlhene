@@ -16,6 +16,20 @@
 			</div>
 
 			<div class="column is-10">
+				<div class="offcanvas">
+					<div class="is-flex" style="margin-bottom: 2rem;">
+						<button class="delete" style="margin-left: auto; margin-top: 3%; margin-right: 2.5%;" (click)="closeOffCanvas()"></button>
+					</div>
+					<div class="menu">
+						<ul class="menu-list">
+							<li><a class="is-active" (click)="scrollTo('informations')" data-id="informations">Informations</a></li>
+							<li><a (click)="scrollTo('quetes')" data-id="quetes">Quêtes</a></li>
+							<li><a (click)="scrollTo('items')" data-id="items">Objets de la guilde</a></li>
+							<li><a (click)="scrollTo('membres')" data-id="membres">Membres</a></li>
+						</ul>
+					</div>
+				</div>
+			
 				<div class="level is-mobile block">
 					<div class="level-item has-text-centered">
 						<div>
@@ -102,6 +116,12 @@
 				</article>
 			</div>
 		</div>
+		
+		<button id="btn-menu" class="button is-primary is-rounded is-hidden-tablet" (click)="openOffCanvas()">
+			<span class="icon is-small">
+				<i class="fas fa-list-alt"></i>
+			</span>
+		</button>
 	</div>
 	
 	<div id="modal-membre" class="modal">
