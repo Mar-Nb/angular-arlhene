@@ -12,6 +12,6 @@ export class CultureService {
 
   getMenu() { return this.http.get(this.urlApi + "?menu=true"); }
 
-  getContenu() { return this.http.get(this.urlApi); }
+  getContenu(type: string) { return this.http.get(this.urlApi + (type != "" ? `?type=${type}` : "")); }
 
 }
