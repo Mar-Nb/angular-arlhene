@@ -57,11 +57,11 @@ export class CarteComponent implements OnInit {
 		document.getElementById("modal-" + continent)?.classList.add("is-active");
 		document.getElementsByTagName("html")[0].classList.add("is-clipped");
 		this.geoService.getGeoInfos(continent).subscribe({
-			next(value: any) {
-				console.log("Donnée du continent :", value);
+			next: (value: any) => {
+				//console.log("Donnée du continent :", value);
 				(document.getElementById("modal-" + continent)?.querySelector("section p") as HTMLParagraphElement).textContent = value.infos;
 			},
-			error(err) { console.log(err.message) }
+			error: (err: Error) => { console.log(err.message); }
 		});
 	}
 

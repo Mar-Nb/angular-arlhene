@@ -8,7 +8,7 @@ export class GeoService {
 
   urlApi: string;
 
-  constructor(private http: HttpClient) { this.urlApi = "http://localhost/api-arlhene/geo.php"; }
+  constructor(private http: HttpClient) { this.urlApi = "http://localhost/api-arlhene/geographie.php"; }
 
   getGeoInfos(nom: string) { return this.http.get(this.urlApi + "?nom=" + nom.toLowerCase()); }
 

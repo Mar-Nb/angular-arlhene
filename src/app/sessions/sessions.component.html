@@ -5,14 +5,14 @@
 		</h2>
 		
 		<!-- Bouton de navigation pour les mobiles -->
-		<button id="mobile-nav" class="button is-pulled-right is-primary is-large is-hidden-tablet" (click)="openModal('modal-mobile-nav')">
+		<!-- <button id="mobile-nav" class="button is-pulled-right is-primary is-large is-hidden-tablet" (click)="openModal('modal-mobile-nav')">
 			<span class="icon is-small">
 				<i class="fas fa-ellipsis-h"></i>
 			</span>
-		</button>
+		</button> -->
 
 		<div class="columns">
-			<div class="column is-2">
+			<div class="column is-2 is-hidden-mobile">
 				<div class="field">
 					<label class="label">Point de vue</label>
 
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 
-				<aside class="menu is-hidden-mobile fixed-menu">
+				<aside class="menu fixed-menu">
 					<ul class="menu-list">
 						<li *ngFor="let s of sessions; first as isFirst">
 							<!-- Obliger de passer par la syntaxe "attr.data" pour les données en dataset -->
@@ -38,18 +38,45 @@
 								Session {{ s.numero }}
 							</a>
 						</li>
-						<!-- <li><a class="is-active" (click)="scrollTo('session-1')" data-id="session-1">Session 1</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-2')" data-id="session-2">Session 2</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-3')" data-id="session-3">Session 3</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-4')" data-id="session-4">Session 4</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-5')" data-id="session-5">Session 5</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-6')" data-id="session-6">Session 6</a></li> -->
-						<!-- <li><a (click)="scrollTo('session-6-1')" data-id="session-6-1">Session 6.1</a></li> -->
 					</ul>
 				</aside>
 			</div>
 
 			<div class="column is-10">
+				<div class="offcanvas">
+					<div class="is-flex" style="margin-bottom: 2rem;">
+						<button class="delete" style="margin-left: auto; margin-top: 3%; margin-right: 2.5%;" (click)="closeOffCanvas()"></button>
+					</div>
+
+					<div class="field">
+						<label class="label">Point de vue</label>
+	
+						<div class="control has-icons-left">
+							<div class="select is-primary is-rounded">
+								<select id="choix-j" (change)="getSessionsJoueur()">
+									<option *ngIf="joueurs.length === 0" selected>Quelqu'un</option>
+									<option #optionsJoueurs *ngFor="let j of joueurs; first as isFirst; last as isLast" [selected]="isFirst ? true : false">{{ j.joueur }}</option>
+								</select>
+							</div>
+	
+							<div class="icon is-small is-left">
+								<i class="fa-solid fa-user"></i>
+							</div>
+						</div>
+					</div>
+	
+					<aside class="menu">
+						<ul class="menu-list">
+							<li *ngFor="let s of sessions; first as isFirst">
+								<!-- Obliger de passer par la syntaxe "attr.data" pour les données en dataset -->
+								<a [class]="isFirst ? 'is-active' : ''" (click)="scrollTo('session-' + s.numero, $event.target);" [attr.data-id]="'session-' + s.numero">
+									Session {{ s.numero }}
+								</a>
+							</li>
+						</ul>
+					</aside>
+				</div>
+
 				<article #listeSessions *ngFor="let s of sessions" [id]="'session-' + s.numero">
 					<h2 class="is-size-4 no-sub">Sessions {{ s.numero }}</h2>
 					<p class="has-text-justified" [innerHTML]="s.session"></p>
@@ -58,7 +85,13 @@
 		</div>
 	</div>
 	
-	<div id="modal-mobile-nav" class="modal is-hidden-tablet">
+	<button id="btn-menu" class="button is-primary is-rounded is-hidden-tablet" (click)="openOffCanvas()">
+		<span class="icon is-small">
+			<i class="fas fa-list-alt"></i>
+		</span>
+	</button>
+
+	<!-- <div id="modal-mobile-nav" class="modal is-hidden-tablet">
 		<div class="modal-background" (click)="closeModal('modal-mobile-nav')"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
@@ -75,5 +108,5 @@
 				<button class="button" (click)="closeModal('modal-mobile-nav')">Annuler</button>
 			</footer>
 		</div>
-	</div>
+	</div> -->
 </section>
