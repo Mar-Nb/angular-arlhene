@@ -16,6 +16,18 @@
 			</div>
 
 			<div class="column is-10">
+				<div class="offcanvas">
+					<div class="is-flex" style="margin-bottom: 2rem;">
+						<button class="delete" style="margin-left: auto; margin-top: 3%; margin-right: 2.5%;" (click)="closeOffCanvas()"></button>
+					</div>
+					<div class="menu">
+						<ul class="menu-list">
+							<li><a class="is-active" (click)="scrollTo('precedemment')" data-id="precedemment">Précédemment</a></li>
+							<li><a (click)="scrollTo('facepalm')" data-id="facepalm">Facepalm récent</a></li>
+						</ul>
+					</div>
+				</div>
+
 				<article id="precedemment">
 					<h2 class="is-size-4 no-sub">Précédemment...</h2>
 					<p class="has-text-justified">
@@ -56,6 +68,13 @@
 					</div>
 				</article>
 			</div>
+
+			<button id="btn-menu" class="button is-primary is-rounded is-hidden-tablet" (click)="openOffCanvas()">
+				<span class="icon is-small">
+					<i class="fas fa-list-alt"></i>
+				</span>
+			</button>
+
 		</div>
 	</div>
 </section>

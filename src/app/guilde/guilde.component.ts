@@ -17,14 +17,12 @@ export class GuildeComponent implements OnInit {
 		// Changer le menu-item qui a la classe "is-active"
 		document.querySelectorAll(".menu-list a").forEach((link) => {
 			link.addEventListener("click", () => {
-				const activeLink = document.querySelector(".fixed-menu a.is-active");
-				const activeLinkOff = document.querySelector(".offcanvas a.is-active");
-				activeLink?.classList.remove("is-active");
-				activeLinkOff?.classList.remove("is-active");
-				link.classList.add("is-active");
-
-				const linkOff = document.querySelector(`.fixed-menu a[data-id='${(link as HTMLAnchorElement).dataset['id']}'`);
-				linkOff?.classList.add("is-active");
+				document.querySelectorAll("a.is-active").forEach((e) => e.classList.remove("is-active"));
+				
+				// Les items possédant le même data-id que le lien cliqué sont passés en "is-active"
+				document.querySelectorAll(`a[data-id='${(link as HTMLAnchorElement).dataset['id']}'`).forEach((e) => {
+					e.classList.add("is-active");
+				});
 			});
 		});
 

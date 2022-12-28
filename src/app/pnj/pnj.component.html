@@ -2,7 +2,8 @@
 	<div class="container">
 		<h1 class="title">Listes des PNJ</h1>
 		<h2 class="subtitle">
-			Les PNJ (<strong>P</strong>ersonnage <strong>N</strong>on <strong>J</strong>ouable) rencontrés au cours de l'histoire
+			Les PNJ (<strong>P</strong>ersonnage <strong>N</strong>on <strong>J</strong>ouable) rencontrés au cours de
+			l'histoire
 		</h2>
 
 		<div class="columns">
@@ -13,30 +14,65 @@
 					<p class="menu-label">Type</p>
 					<ul class="menu-list">
 						<li><label class="checkbox" disabled>
-							<input type="checkbox" disabled>
-							Humain
-						</label></li>
+								<input type="checkbox" disabled>
+								Humain
+							</label></li>
 						<li><label class="checkbox" disabled>
-							<input type="checkbox" disabled>
-							Familier
-						</label></li>
+								<input type="checkbox" disabled>
+								Familier
+							</label></li>
 					</ul>
 
 					<p class="menu-label">Etat</p>
 					<ul class="menu-list">
 						<li><label class="checkbox" disabled>
-							<input type="checkbox" name="" id="" disabled>
-							Vivant
-						</label></li>
+								<input type="checkbox" name="" id="" disabled>
+								Vivant
+							</label></li>
 						<li><label class="checkbox" disabled>
-							<input type="checkbox" name="" id="" disabled>
-							Mort
-						</label></li>
+								<input type="checkbox" name="" id="" disabled>
+								Mort
+							</label></li>
 					</ul>
 				</aside>
 			</div>
 
 			<div class="column is-10">
+				<div class="offcanvas">
+					<div class="is-flex" style="margin-bottom: 2rem;">
+						<button class="delete" style="margin-left: auto; margin-top: 3%; margin-right: 2.5%;"
+							(click)="closeOffCanvas()"></button>
+					</div>
+
+					<h3 class="is-size-5 is-uppercase has-text-grey-light block">Filtres</h3>
+
+					<aside class="menu">
+						<p class="menu-label">Type</p>
+						<ul class="menu-list">
+							<li><label class="checkbox" disabled>
+									<input type="checkbox" disabled>
+									Humain
+								</label></li>
+							<li><label class="checkbox" disabled>
+									<input type="checkbox" disabled>
+									Familier
+								</label></li>
+						</ul>
+
+						<p class="menu-label">Etat</p>
+						<ul class="menu-list">
+							<li><label class="checkbox" disabled>
+									<input type="checkbox" name="" id="" disabled>
+									Vivant
+								</label></li>
+							<li><label class="checkbox" disabled>
+									<input type="checkbox" name="" id="" disabled>
+									Mort
+								</label></li>
+						</ul>
+					</aside>
+				</div>
+
 				<div class="level is-mobile">
 					<div class="level-item has-text-centered">
 						<div>
@@ -67,7 +103,8 @@
 							</div>
 
 							<footer class="card-footer">
-								<button id="{{ pnj.id }}" class="button is-primary card-footer-item" data-trigger="modal" data-target="modal-pnj" (click)="openModal('modal-pnj')">Détail</button>
+								<button id="{{ pnj.id }}" class="button is-primary card-footer-item" data-trigger="modal"
+									data-target="modal-pnj" (click)="openModal('modal-pnj')">Détail</button>
 							</footer>
 						</div>
 					</div>
@@ -127,8 +164,14 @@
 					</div> -->
 				</div>
 			</div>
+
+			<button id="btn-menu" class="button is-primary is-rounded is-hidden-tablet" (click)="openOffCanvas()">
+				<span class="icon is-small">
+					<i class="fas fa-list-alt"></i>
+				</span>
+			</button>
 		</div>
-		
+
 		<div id="modal-pnj" class="modal">
 			<div class="modal-background" (click)="closeModal('modal-pnj')"></div>
 			<div class="modal-card">
@@ -138,7 +181,8 @@
 				</header>
 				<section class="modal-card-body">
 					<!-- Content ... -->
-					C'est ici que figureront les informations concernant le PNJ : histoire (plus ou moins longue), stats connues, ...
+					C'est ici que figureront les informations concernant le PNJ : histoire (plus ou moins longue), stats connues,
+					...
 				</section>
 			</div>
 		</div>

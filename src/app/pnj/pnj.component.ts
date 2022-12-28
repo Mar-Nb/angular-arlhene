@@ -41,4 +41,14 @@ export class PnjComponent implements OnInit {
     });
   }
 
+  openOffCanvas() {
+		(document.querySelector(".offcanvas") as HTMLDivElement).style.width = "100%";
+		document.getElementsByTagName("html")[0]?.classList.add("is-clipped");
+	}
+
+	closeOffCanvas() {
+		(document.querySelector(".offcanvas") as HTMLDivElement).style.width = "0";
+		document.getElementsByTagName("html")[0]?.classList.remove("is-clipped");
+	}
+
 }
