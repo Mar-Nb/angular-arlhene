@@ -16,6 +16,20 @@
 			</div>
 
 			<div class="column is-10">
+				<div class="offcanvas">
+					<div class="is-flex" style="margin-bottom: 2rem;">
+						<button class="delete" style="margin-left: auto; margin-top: 3%; margin-right: 2.5%;" (click)="closeOffCanvas()"></button>
+					</div>
+					<div class="menu">
+						<ul class="menu-list">
+							<li><a class="is-active" (click)="scrollTo('carte-monde')" data-id="carte-monde">Carte du monde</a></li>
+							<li><a (click)="scrollTo('pos-actu')" data-id="pos-actu">Position actuelle</a></li>
+							<li><a (click)="scrollTo('pro-dest')" data-id="pro-dest">Prochaine destination</a></li>
+							<li><a (click)="scrollTo('territoires')" data-id="territoires">Territoires</a></li>
+						</ul>
+					</div>
+				</div>
+
 				<article id="carte-monde">
 					<h2 class="is-size-4 no-sub">Carte du monde</h2>
 
@@ -136,6 +150,12 @@
 					<p class="has-text-justified"></p>
 				</article>
 			</div>
+
+			<button id="btn-menu" class="button is-primary is-rounded is-hidden-tablet" (click)="openOffCanvas()">
+				<span class="icon is-small">
+					<i class="fas fa-list-alt"></i>
+				</span>
+			</button>
 		</div>
 	</div>
 </section>
