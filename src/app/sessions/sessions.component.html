@@ -53,7 +53,7 @@
 	
 						<div class="control has-icons-left">
 							<div class="select is-primary is-rounded">
-								<select id="choix-j" (change)="getSessionsJoueur()">
+								<select id="choix-j-off" (change)="getSessionsJoueur(true)">
 									<option *ngIf="joueurs.length === 0" selected>Quelqu'un</option>
 									<option #optionsJoueurs *ngFor="let j of joueurs; first as isFirst; last as isLast" [selected]="isFirst ? true : false">{{ j.joueur }}</option>
 								</select>
@@ -89,6 +89,7 @@
 		<span class="icon is-small">
 			<i class="fas fa-list-alt"></i>
 		</span>
+		<span id="indic"></span>
 	</button>
 
 	<!-- <div id="modal-mobile-nav" class="modal is-hidden-tablet">

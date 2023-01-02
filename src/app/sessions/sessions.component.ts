@@ -93,11 +93,21 @@ export class SessionsComponent implements OnInit, AfterViewInit {
 		document.getElementsByTagName("html")[0]?.classList.remove("is-clipped");
 	}
 	
-	getSessionsJoueur() {
-		const joueur = (document.getElementById("choix-j") as HTMLSelectElement).value;
+	getSessionsJoueur(isOffcanvas: boolean = false) {
+		let joueur;
+		if (! isOffcanvas) {
+			joueur = (document.getElementById("choix-j") as HTMLSelectElement).value;
+			(document.getElementById("choix-j-off") as HTMLSelectElement).value = joueur;
+		} else {
+			joueur = (document.getElementById("choix-j-off") as HTMLSelectElement).value;
+			(document.getElementById("choix-j") as HTMLSelectElement).value = joueur;
+		}
+
+		(document.getElementById("indic") as HTMLSpanElement).textContent = joueur;
+
 		this.sessionServ.getSessions(joueur).subscribe({
 			next: (value: any) => {
-				console.log("Liste des sessions du joueur sélectionné : ", value);
+				// console.log("Liste des sessions du joueur sélectionné : ", value);
 				this.sessions = value;
 			},
 			error: (err: Error) => alert("Erreur de récupération des sessions du joueur sélectionné : " + err.message)

@@ -8,7 +8,7 @@ export class PnjServiceService {
 
   urlApi: string;
 
-  constructor(private http: HttpClient) { this.urlApi = "http://localhost/api-arlhene/test.php"; }
+  constructor(private http: HttpClient) { this.urlApi = "http://localhost/api-arlhene/pnj.php"; }
   
   getAll() { return this.http.get(this.urlApi); }
 }
