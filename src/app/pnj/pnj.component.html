@@ -88,8 +88,8 @@
 					</div>
 				</div>
 
-				<div class="columns is-desktop is-multiline is-vcentered">
-					<div class="column is-one-third" *ngFor="let pnj of listePnj">
+				<div class="columns is-multiline is-vcentered">
+					<div class="column is-one-third-tablet" *ngFor="let pnj of listePnj">
 						<div class="card">
 							<div class="card-content">
 								<div class="tags">
@@ -107,6 +107,20 @@
 									data-target="modal-pnj" (click)="openModal('modal-pnj')">Détail</button>
 							</footer>
 						</div>
+					</div>
+
+					<div class="container">
+						<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+							<a class="button pagination-previous is-primary is-rounded" (click)="previousPage()">Précédent</a>
+							<a class="button pagination-next is-primary is-rounded" (click)="nextPage()">Suivant</a>
+							<ul class="pagination-list">
+								<li>
+									<div class="select is-primary is-rounded">
+										<select></select>
+									</div>
+								</li>
+							</ul>
+						</nav>
 					</div>
 
 					<!-- <div class="column">

@@ -9,6 +9,8 @@ import { PnjServiceService } from '../services/pnj-service.service'
 export class PnjComponent implements OnInit {
 
   listePnj: any;
+  nbPage: number = 0;
+  currentPage: number = 1;
 
   constructor(private pnjServ: PnjServiceService) { }
 
@@ -28,12 +30,22 @@ export class PnjComponent implements OnInit {
 
   ngOnInit(): void {
     const pnjObserver = {
-      next: (value: any) => this.listePnj = value,
+      next: (value: any) => {
+        this.listePnj = value.resultat;
+        this.nbPage = value.nbPage;
+      },
       error: (err: Error) => alert("Erreur de récupération des PNJ : " + err.message),
-      complete: () => {}
+      complete: () => {
+        for (let index = 0; index < this.nbPage; index++) {
+          const opt = document.createElement("option");
+          opt.textContent = "" + (index + 1);
+          opt.onclick = () => { this.changePage(opt.text); }
+          (document.querySelector(".container .pagination select") as HTMLSelectElement).appendChild(opt);
+        }
+      }
     };
 
-    this.pnjServ.getAll().subscribe(pnjObserver);
+    this.pnjServ.getPage().subscribe(pnjObserver);
 
     document.addEventListener("keydown", (evt) => {
       const e = evt || window.event;
@@ -50,5 +62,33 @@ export class PnjComponent implements OnInit {
 		(document.querySelector(".offcanvas") as HTMLDivElement).style.width = "0";
 		document.getElementsByTagName("html")[0]?.classList.remove("is-clipped");
 	}
+
+  changePage(page: string) {
+    this.pnjServ.getPage(page).subscribe({
+      next: (value: any) => {
+        this.listePnj = value.resultat;
+        this.currentPage = parseInt(page);
+      },
+      error: (err: Error) => alert("Erreur de récupération des PNJ : " + err.message)
+    });
+  }
+
+  nextPage() {
+    this.currentPage++;
+    if (this.currentPage > this.nbPage) { this.currentPage = this.nbPage; }
+    else {
+      this.changePage(`${this.currentPage}`);
+      (document.querySelector(".container .pagination select") as HTMLSelectElement).value = `${this.currentPage}`;
+    }
+  }
+
+  previousPage() {
+    this.currentPage--;
+    if (this.currentPage < 1) { this.currentPage = 1; }
+    else {
+      this.changePage(`${this.currentPage}`);
+      (document.querySelector(".container .pagination select") as HTMLSelectElement).value = `${this.currentPage}`;
+    }
+  }
 
 }

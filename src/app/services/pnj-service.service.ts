@@ -10,5 +10,5 @@ export class PnjServiceService {
 
   constructor(private http: HttpClient) { this.urlApi = "http://localhost/api-arlhene/pnj.php"; }
   
-  getAll() { return this.http.get(this.urlApi); }
+  getPage(page: string = "1") { return this.http.get(this.urlApi + (page != "1" ? `?page=${page}` : "")); }
 }

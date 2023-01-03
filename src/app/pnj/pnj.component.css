@@ -27,3 +27,9 @@ input[type="checkbox"]:disabled {
   bottom: 8%;
   right: 7%;
 }
+
+div.container .pagination { 
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 3rem;
+}
