@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FacepalmsService } from '../services/facepalms.service';
 
 @Component({
 	selector: 'app-accueil',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-	constructor() { }
+	constructor(private fpServ: FacepalmsService) { }
 
 	isScrolling: boolean = false;
+	listeFP: any;
 
 	ngOnInit(): void {
 		// Changer le menu-item qui a la classe "is-active"
@@ -42,6 +44,12 @@ export class AccueilComponent implements OnInit {
 		}, { rootMargin: "-50% 0px" });
 
 		for (let i = 0; i < articles.length; i++) { observer.observe(articles[i]); }
+
+		// Récupération des trois "facepalms" les plus récents en BD
+		this.fpServ.getAll().subscribe({
+			next: (value: any) => { this.listeFP = value; },
+			error: (err: Error) => alert("Erreur de récupération des PNJ : " + err.message)
+		});
 	}
 
 	scrollTo(element: string): void {

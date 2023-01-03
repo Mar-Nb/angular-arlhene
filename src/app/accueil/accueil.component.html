@@ -44,7 +44,7 @@
 						Une catégorie pour citer un moment (ou plusieurs ?) qui mérite un "facepalm"
 					</h3>
 
-					<div class="box">
+					<div class="box" *ngFor="let fp of listeFP">
 						<div class="media">
 							<figure class="media-left">
 								<p class="image is-64x64">
@@ -53,16 +53,28 @@
 							</figure>
 
 							<div class="media-content">
-								<div class="content">
-									<p>
+								<div class="content" [innerHTML]="fp.texte">
+									<!-- <p>
 										<strong>Sezan l'Elfe </strong> <small class="has-text-link"> @Martin</small>
 										<br>
 										Certains diront que mon avis est sans doute biaisé, mais dénoncer un camarade à un boss aux stats
 										<strong>surboostées</strong> est certainement la définition d'une action "facepalm".
 										<br><br>
 										<span class="is-italic">(La personne visée se reconnaîtra...)</span>
-									</p>
+									</p> -->
 								</div>
+
+								<nav class="level">
+									<div class="level-left">
+										<div class="level-item"></div>
+									</div>
+
+									<div class="level-right">
+										<div class="level-item">
+											<small class="is-italic has-text-link">Session {{ fp.session }}</small>
+										</div>
+									</div>
+								</nav>
 							</div>
 						</div>
 					</div>
